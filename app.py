@@ -10,7 +10,7 @@ from datetime import datetime
 # Page config minimal
 st.set_page_config(page_title="অপরিচিতা", layout="centered")
 
-st.title("📚 আলোচ্য বিষয় 'অপরিচিতা' গল্প")
+st.title("আলোচ্য বিষয় 'অপরিচিতা' গল্প")
 
 # Remove API Key input and related logic
 
@@ -24,59 +24,59 @@ if 'related_topics' not in st.session_state:
 # Initialize or reuse RAG system (Long-term memory)
 if 'rag_system' not in st.session_state:
     try:
-        with st.spinner("🧠 Loading Long-term Memory (Vector Database)..."):
+        with st.spinner("Loading Long-term Memory (Vector Database)..."):
             st.session_state.rag_system = BasicBanglaRAG()
-        st.success("✅ Memory system loaded!")
+        st.success("Memory system loaded!")
     except Exception as e:
         st.error(f"RAG initialization failed: {e}")
         st.stop()
 
 # Memory status sidebar
 with st.sidebar:
-    st.header("🧠 Memory Status")
+    st.header("Memory Status")
     
     # Short-term memory
-    st.subheader("💭 Short-term Memory")
+    st.subheader("Short-term Memory")
     st.metric("Conversation History", len(st.session_state.conversation_history))
     st.metric("Related Topics", len(st.session_state.related_topics))
     
     # Long-term memory
-    st.subheader("📚 Long-term Memory")
+    st.subheader("Long-term Memory")
     if st.session_state.rag_system:
         st.metric("Vector Database", f"{len(st.session_state.rag_system.chunks)} chunks")
-        st.info("✅ Knowledge base loaded")
+        st.info("Knowledge base loaded")
     
     # Show recent topics
     if st.session_state.related_topics:
-        st.subheader("🏷️ Discussed Topics")
+        st.subheader("Discussed Topics")
         for topic in list(st.session_state.related_topics)[-5:]:
-            st.write(f"📌 {topic}")
+            st.write(f"{topic}")
     
     # Clear memory button
-    if st.button("🗑️ Clear Short-term Memory"):
+    if st.button("Clear Short-term Memory"):
         st.session_state.conversation_history = []
         st.session_state.related_topics = set()
         st.success("Memory cleared!")
 
 # Input box for question
 question = st.text_input(
-    "আপনার প্রশ্ন লিখুন (বাংলা/ইংরেজি/ব্যাংলিশ)", 
+    "আপনার প্রশ্ন লিখুন", 
     placeholder="যেমন: anupamer boyosh koto? অথবা অনুপমের বয়স কত?"
 )
 
 # Search method selection
 search_method = st.selectbox(
-    "🔍 সার্চ পদ্ধতি নির্বাচন করুন:",
+    "সার্চ পদ্ধতি নির্বাচন করুন:",
     ["hybrid", "vector", "keyword"],
     format_func=lambda x: {
-        "hybrid": "⚡ হাইব্রিড (সেরা ফলাফল - ভেক্টর + কীওয়ার্ড)",
-        "vector": "🧠 সিমান্টিক সার্চ (অর্থ বুঝে খোঁজে)",
-        "keyword": "🔍 কীওয়ার্ড সার্চ (শব্দ মিল)"
+        "hybrid": "হাইব্রিড (সেরা ফলাফল - ভেক্টর + কীওয়ার্ড)",
+        "vector": "সিমান্টিক সার্চ (অর্থ বুঝে খোঁজে)",
+        "keyword": "কীওয়ার্ড সার্চ (শব্দ মিল)"
     }[x]
 )
 
 if st.button("জিজ্ঞাসা করুন") and question.strip():
-    with st.spinner("🔍 উত্তর খুঁজছে (Short-term + Long-term Memory)..."):
+    with st.spinner("উত্তর খুঁজছে (Short-term + Long-term Memory)..."):
         # Pass conversation history for context-aware responses
         result = st.session_state.rag_system.query(
             question, 
@@ -84,7 +84,7 @@ if st.button("জিজ্ঞাসা করুন") and question.strip():
             conversation_history=st.session_state.conversation_history
         )
     
-    st.markdown("### 💬 উত্তর:")
+    st.markdown("উত্তর:")
     st.write(result['answer'])
     
     # Add to conversation history (Short-term memory)
@@ -114,17 +114,17 @@ if st.button("জিজ্ঞাসা করুন") and question.strip():
     
     # Show search method used and memory status
     method_names = {
-        "hybrid": "⚡ হাইব্রিড সার্চ",
-        "vector": "🧠 সিমান্টিক সার্চ", 
-        "keyword": "🔍 কীওয়ার্ড সার্চ"
+        "hybrid": "হাইব্রিড সার্চ",
+        "vector": "সিমান্টিক সার্চ", 
+        "keyword": "কীওয়ার্ড সার্চ"
     }
     
-    memory_status = "🧠 Short-term + Long-term Memory" if result.get('used_conversation_memory') else "📚 Long-term Memory only"
+    memory_status = "Short-term + Long-term Memory" if result.get('used_conversation_memory') else "📚 Long-term Memory only"
     
     st.info(f"ব্যবহৃত পদ্ধতি: {method_names.get(result.get('search_method', 'hybrid'), 'হাইব্রিড')} | {memory_status}")
     
     if result.get('relevant_chunks'):
-        st.markdown("#### 📚 প্রাসঙ্গিক তথ্যসূত্র (Long-term Memory):")
+        st.markdown("প্রাসঙ্গিক তথ্যসূত্র:")
         for idx, chunk in enumerate(result['relevant_chunks']):
             # Show similarity score if available
             metadata = chunk.get('metadata', {})
@@ -138,7 +138,7 @@ else:
     st.info("প্রশ্ন লিখে 'জিজ্ঞাসা করুন' বাটনে ক্লিক করুন।")
     
     # Sample questions
-    st.markdown("### 🎯 নমুনা প্রশ্ন:")
+    st.markdown("নমুনা প্রশ্ন:")
     col1, col2 = st.columns(2)
     
     with col1:
@@ -156,7 +156,7 @@ else:
 # Show conversation history (Short-term memory)
 if st.session_state.conversation_history:
     st.markdown("---")
-    st.markdown("### 💭 কথোপকথনের ইতিহাস (Short-term Memory)")
+    st.markdown("কথোপকথনের ইতিহাস (Short-term Memory)")
     
     # Show last 3 conversations
     recent_conversations = st.session_state.conversation_history[-3:]
@@ -168,24 +168,4 @@ if st.session_state.conversation_history:
             st.caption(f"পদ্ধতি: {conv['search_method']}")
 
 # Memory explanation
-st.markdown("---")
-st.markdown("### 🧠 Memory System ব্যাখ্যা:")
-col1, col2 = st.columns(2)
 
-with col1:
-    st.markdown("""
-    **💭 Short-term Memory:**
-    - Recent conversation history
-    - Discussed topics tracking
-    - Session context maintenance
-    - Follow-up question support
-    """)
-
-with col2:
-    st.markdown("""
-    **📚 Long-term Memory:**
-    - Vector database (362 chunks)
-    - Semantic search capability
-    - Knowledge base from PDF
-    - Persistent information storage
-    """)
