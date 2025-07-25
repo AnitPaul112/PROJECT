@@ -8,9 +8,9 @@ from basic_rag import BasicBanglaRAG
 from datetime import datetime
 
 # Page config minimal
-st.set_page_config(page_title="অপরিচিতা - Enhanced Memory", layout="centered")
+st.set_page_config(page_title="অপরিচিতা", layout="centered")
 
-st.title("📚 আলোচ্য বিষয় 'অপরিচিতা' - Enhanced Memory")
+st.title("📚 আলোচ্য বিষয় 'অপরিচিতা' গল্প")
 
 # Remove API Key input and related logic
 
