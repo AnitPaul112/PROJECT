@@ -45,6 +45,8 @@ pip install streamlit openai python-dotenv sentence-transformers numpy scikit-le
 In .env file:
 ```
 OPENAI_API_KEY=your_openai_api_key_here
+
+You can create your openai key from here: https://platform.openai.com/api-keys
 ```
 
 ### 5. Run the Application
