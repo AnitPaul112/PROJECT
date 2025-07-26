@@ -145,12 +145,26 @@ This project converts PDF documents to text, processes them into chunks, and pro
 ├── basic_rag.py           # Core RAG implementation
 ├── api.py                 # FastAPI backend
 ├── requirements.txt       # Python dependencies
+├── run_react_app.bat      # One-click launcher batch file
 └── frontend/              # React TypeScript app
     ├── src/
     │   ├── App.tsx        # Main chat interface
     │   └── App.css        # Styling
     └── package.json       # Node dependencies
 ```
+
+## Quick Start with Batch File
+
+For the easiest setup, simply double-click the `run_react_app.bat` file. This batch file will automatically:
+
+1. **Install Python dependencies** from `requirements.txt`
+2. **Navigate to frontend directory** and install npm packages
+3. **Start the React development server** 
+4. **Open the application** in your default browser
+
+**Requirements:** Make sure you have Python and Node.js installed on your system before running the batch file.
+
+Just double-click `run_react_app.bat` and the entire application will be set up and running automatically!
 
 ## License
 
