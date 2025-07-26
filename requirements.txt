@@ -1,11 +1,25 @@
-openai==1.97.1
-streamlit==1.31.0
-sentence-transformers==2.2.2
-scikit-learn==1.4.0
-python-dotenv==1.0.1
-numpy==1.24.3
 pandas==2.2.0
 faiss-cpu==1.7.4
 langchain==0.1.9
 langchain-openai==0.0.8
 langchain-community==0.0.24
+
+
+# Core AI/ML Libraries
+openai==1.97.1
+sentence-transformers==2.2.2
+scikit-learn==1.4.0
+numpy==1.24.3
+
+# Web Framework & API
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+
+# PDF Processing & OCR
+pdf2image==1.17.0
+Pillow==10.1.0
+pytesseract==0.3.10
+
+# Utilities
+python-dotenv==1.0.1
