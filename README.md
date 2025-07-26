@@ -23,7 +23,7 @@ This project converts PDF documents to text, processes them into chunks, and pro
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/AnitPaul112/PROJECT.git
+   git clone https://github.com/AnitPaul112/PROJECT
    cd PROJECT
    ```
 
