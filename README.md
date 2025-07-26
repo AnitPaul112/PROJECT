@@ -24,7 +24,7 @@ An advanced Bengali literature education chatbot powered by RAG (Retrieval Augme
 
 ### 1. Clone and Navigate
 ```bash
-git clone https://github.com/AnitPaul112/10-minute-project
+git clone https://github.com/AnitPaul112/PROJECT
 cd "PROJECT"
 ```
 
