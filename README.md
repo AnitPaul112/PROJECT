@@ -1,8 +1,8 @@
-অপরিচিতা RAG Chatbot
+##  অপরিচিতা RAG Chatbot
 
 A modern Bengali Retrieval-Augmented Generation (RAG) chatbot built with React TypeScript frontend and FastAPI backend, designed to answer questions about Rabindranath Tagore's "Oporichita" story.
 
- About
+##  About
 
 This project implements an intelligent conversational AI system that can understand and respond to questions in both Bengali and Banglish (Bengali written in English script) about the classic Bengali story "Oporichita" by Rabindranath Tagore.
 
