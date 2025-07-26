@@ -439,9 +439,15 @@ Answer:"""
                 temperature=0.3
             )
             
-            return response.choices[0].message.content
+            # Ensure we have a valid response
+            answer = response.choices[0].message.content
+            if answer is None or answer.strip() == "":
+                return "দুঃখিত, কোনো উত্তর পাওয়া যায়নি। আবার চেষ্টা করুন।"
+            
+            return answer.strip()
             
         except Exception as e:
+            print(f"❌ OpenAI API Error: {str(e)}")
             return f"দুঃখিত, একটি ত্রুটি ঘটেছে: {str(e)}"
     
     def is_banglish_query(self, text):
