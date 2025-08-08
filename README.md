@@ -36,6 +36,7 @@ This project converts PDF documents to text, processes them into chunks, and pro
    Create `.env` file with your OpenAI API key:
    ```
    OPENAI_API_KEY=your_openai_api_key_here
+   You can get an openai_api key from https://platform.openai.com/api-keys
    ```
 
 4. **Install Tesseract OCR:**
